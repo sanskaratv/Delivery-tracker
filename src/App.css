@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.map-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  background: #e5e7eb;
+}
+
+.error-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  max-width: 400px;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.control-panel {
+  width: 320px;
+  background: #f9fafb;
+  padding: 24px;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.control-panel h2 {
+  font-size: 24px;
+  color: #111827;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-start {
+  background: #10b981;
+}
+
+.btn-pause {
+  background: #f59e0b;
+}
+
+.btn-reset {
+  background: #ef4444;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid #e5e7eb;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.stats-box {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #e5e7eb;
+}
+
+.stat-item {
+  margin-bottom: 12px;
+}
+
+.stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-family: monospace;
+  color: #111827;
+}
+
+.stat-progress {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3b82f6;
+  transition: width 0.1s linear;
+}
+
+.stat-distance {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.legend {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.legend-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-item span {
+  color: #374151;
+}
+
+/* Route selector styles */
+.route-selector {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #e5e7eb;
+}
+
+.route-option {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.route-option:first-of-type {
+  margin-top: 8px;
+}
+
+.route-option:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #6366f1;
+}
+
+.route-option.selected {
+  background: #eef2ff;
+  border-color: #6366f1;
+  border-width: 2px;
+}
+
+.route-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.route-name {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.route-info {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.loading-box {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dbeafe;
+  border: 2px solid #3b82f6;
+  padding: 12px 24px;
+  border-radius: 6px;
+  z-index: 1000;
+  color: #1e40af;
+  font-weight: 600;
+}
