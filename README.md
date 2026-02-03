@@ -24,6 +24,7 @@ Pickup, drop and duration are hard-coded to:
 
 ```bash
 npm install
+npm install maplibre-gl
 ```
 
 ### Start dev server
