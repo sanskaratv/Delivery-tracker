@@ -8,16 +8,20 @@ const DROP = { lng: 91.7362, lat: 26.1445 };
 const TRIP_DURATION = 45000;
 
 const calculateDistanceKm = (point1, point2) => {
-  const R = 6371;
+  //radius of the earth
+  const R = 6371; 
+  //converts degree to radian 
   const dLat = (point2.lat - point1.lat) * Math.PI / 180;
   const dLng = (point2.lng - point1.lng) * Math.PI / 180;
+  //finds the shortest path between two points in a curvature
   const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
     Math.cos(point1.lat * Math.PI / 180) * Math.cos(point2.lat * Math.PI / 180) *
     Math.sin(dLng/2) * Math.sin(dLng/2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  //calculate the final distance between the points
   return R * c;
 };
-
+//for progress calculation in progress bar
 const lerp = (a, b, t) => a + (b - a) * t;
 
 const buildRouteModel = (coordinates) => {
@@ -55,8 +59,7 @@ const positionAtProgress = (routeModel, t) => {
 
   const targetKm = routeModel.totalKm * t;
   const cum = routeModel.cumulativeKm;
-
-  // Linear scan is fine for typical OSRM geometries; could binary search if needed.
+ 
   let segIdx = 0;
   while (segIdx < cum.length - 1 && cum[segIdx + 1] < targetKm) segIdx++;
 
@@ -100,7 +103,7 @@ function App() {
   const [routeDistanceKm, setRouteDistanceKm] = useState(() => routeModelRef.current.totalKm);
 
   const fetchRoute = async () => {
-    // OSRM public demo server. If it rate-limits/fails, we gracefully fall back to straight line.
+    // OSRM public demo server. If it rate-limits/fails,it will fall back to straight line.
     const url = `https://router.project-osrm.org/route/v1/driving/${PICKUP.lng},${PICKUP.lat};${DROP.lng},${DROP.lat}?geometries=geojson&overview=full`;
 
     try {
