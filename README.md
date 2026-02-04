@@ -37,17 +37,7 @@ Then open the URL printed in the terminal, typically:
 
 - Local: `http://localhost:5173/`
 
-### Production build
-
-```bash
-npm run build
-npm run preview
-```
-
-`npm run preview` will start a static server so you can test the built app.
-
----
-
+ 
 ## App Behavior
 
 ### Map & Markers
